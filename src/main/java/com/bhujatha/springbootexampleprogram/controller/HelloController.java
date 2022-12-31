@@ -37,5 +37,9 @@ public class HelloController {
     }
     //sample url :http://localhost:8080/testrp1?name=Bhujatha&emailId=bhujatha@gmail.com
 
+    @GetMapping("/testrp12")
+    public String testRequestParamwithDefaultValue(@RequestParam String name,@RequestParam(name="emailId",required = false,defaultValue = "") String email){
+        return "@RequestParam with default value Name is "+name+"   and Email ID is "+email;
+    }
 
 }
