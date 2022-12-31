@@ -2,10 +2,7 @@ package com.bhujatha.springbootexampleprogram.controller;
 
 import com.bhujatha.springbootexampleprogram.model.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @ResponseBody
@@ -28,6 +25,10 @@ public class HelloController {
     @GetMapping("/test/{name1}")
     public String testPathVariable(@PathVariable("name1") String name){
         return "@PathVariable is user to read the data from URL using "+name;
+    }
 
+    @GetMapping("/test")
+    public String testRequestParam(@RequestParam String name){
+        return "@RequestParam is used to passed the data using QueryParam ?key = value "+name;
     }
 }
