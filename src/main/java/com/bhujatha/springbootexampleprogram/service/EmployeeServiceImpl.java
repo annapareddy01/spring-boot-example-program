@@ -1,5 +1,6 @@
 package com.bhujatha.springbootexampleprogram.service;
 
+import com.bhujatha.springbootexampleprogram.exception.EmployeeNotFoundException;
 import com.bhujatha.springbootexampleprogram.model.Employee;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,6 @@ public class EmployeeServiceImpl implements  EmployeeService{
                 .filter(employee -> employee.getEmailId().equalsIgnoreCase(email))
                 .findFirst()
                // .get();
-                .orElseThrow(()-> new RuntimeException("Employee Not found with the ID "+email));
+                .orElseThrow(()-> new EmployeeNotFoundException("Employee Not found with the ID "+email));
     }
 }
