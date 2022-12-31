@@ -31,4 +31,11 @@ public class HelloController {
     public String testRequestParam(@RequestParam String name){
         return "@RequestParam is used to passed the data using QueryParam ?key = value "+name;
     }
+    @GetMapping("/testrp1")
+    public String testRequestParam(@RequestParam String name,@RequestParam(name="emailId",required = false) String email){
+        return "@RequestParam is used to passed the data using QueryParam ?key = value "+name+"  "+email;
+    }
+    //sample url :http://localhost:8080/testrp1?name=Bhujatha&emailId=bhujatha@gmail.com
+
+
 }
