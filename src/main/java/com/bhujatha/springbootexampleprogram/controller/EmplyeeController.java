@@ -3,11 +3,9 @@ package com.bhujatha.springbootexampleprogram.controller;
 import com.bhujatha.springbootexampleprogram.model.Employee;
 import com.bhujatha.springbootexampleprogram.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -19,11 +17,18 @@ public class EmplyeeController {
 
     @PostMapping("/save")
     public Employee saveEmployee(@RequestBody Employee employee){
-        if(employee.getEmployeeId() == null || employee.getEmployeeId().isEmpty()){
-            employee.setEmployeeId(UUID.randomUUID().toString());
-            employeeService.saveEmployee(employee);
-        }
 
-    return employee;
+        return employeeService.saveEmployee(employee);
+    }
+
+    @GetMapping
+    public List<Employee> loadEmployees(){
+        return employeeService.loadEmployees();
+    }
+
+    @GetMapping("/{email}")
+    public Employee getEmployeeById(@PathVariable String email){
+        Employee employee = employeeService.getEmployeeById(email);
+        return employee;
     }
 }
