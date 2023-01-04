@@ -31,4 +31,9 @@ public class EmplyeeController {
         Employee employee = employeeService.getEmployeeById(email);
         return employee;
     }
+
+    @DeleteMapping("/{email}")
+    public String deleteEmployeeById(@PathVariable String email){
+        return employeeService.deleteEmployeeById(email);
+    }
 }

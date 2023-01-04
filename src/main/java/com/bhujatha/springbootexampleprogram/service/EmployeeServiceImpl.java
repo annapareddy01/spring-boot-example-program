@@ -35,4 +35,16 @@ public class EmployeeServiceImpl implements  EmployeeService{
                // .get();
                 .orElseThrow(()-> new RuntimeException("Employee Not found with the ID "+email));
     }
+
+    @Override
+    public String deleteEmployeeById(String email) {
+        Employee employee = empList.stream()
+                .filter(e -> e.getEmailId().equalsIgnoreCase(email))
+                .findFirst()
+                .get();
+        empList.remove(employee);
+        return "Employee deleted "+email;
+    }
+
+
 }
