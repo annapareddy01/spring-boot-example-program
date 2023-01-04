@@ -18,4 +18,13 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
      ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND,ex.getMessage());
      return errorMessage;
     }
+
+    //Handling User defined Generic Exception
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorMessage genericExceptionHandler(Exception ex){
+        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND,ex.getMessage());
+        return errorMessage;
+    }
 }

@@ -33,6 +33,6 @@ public class EmployeeServiceImpl implements  EmployeeService{
                 .filter(employee -> employee.getEmailId().equalsIgnoreCase(email))
                 .findFirst()
                // .get();
-                .orElseThrow(()-> new EmployeeNotFoundException("Employee Not found with the ID "+email));
+                .orElseThrow(()-> new RuntimeException("Employee Not found with the ID "+email));
     }
 }
